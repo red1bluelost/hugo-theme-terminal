@@ -1,0 +1,10 @@
+<div class="sbs-row">
+    <div class="sbs-left">
+        {{ if .Get "src" }}
+            <img src="{{ .Get "src" | safeURL }}" {{ with .Get "alt" }} alt="{{ . | plainify }}" {{ end }} class="{{ with .Get "position"}}{{ . }}{{ else -}} left {{- end }}" {{ with .Get "style" }} style="{{ . | safeCSS }}" {{ end }} />
+        {{ end }}
+    </div>
+    <div class="sbs-right">
+        {{.Inner}}
+    </div>
+</div>
