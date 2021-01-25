@@ -1,0 +1,61 @@
+<style>
+    div.row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    div.row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    div.column {
+        float: left;
+        width: 30%;
+        padding: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        height: {{with (.Get "vw") }}{{.}}vw;{{else}}25vw;{{end}}
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 684px) {
+        div.column {
+            width: 100%;
+            padding: 5px;
+            height: 50vw;
+        }
+    }
+
+    div.column a {
+        flex-grow: 1;
+        object-fit: cover;
+        margin: 2px;
+        display: flex;
+    }
+
+    div.column a img {
+    }
+
+
+</style>
+<div>
+    {{ $path := print "static/img/" (.Get "src")  }}
+    {{ $useCaption := (.Get "cap") }}
+    {{ $url  := print (.Get "src") }}
+    {{ $group := print (.Get "group") }}
+    {{ range $index, $page := (readDir $path)  }}
+        {{ $src := print "/img" "/" $url "/" $page.Name }}
+        {{ $imgname := (substr $page.Name 3 -4) }}
+        {{ if (modBool $index 3) }}<div class="row">{{end}}
+        <div class="column">
+            <a data-fancybox="gallery" href="{{ $src }}" data-caption="{{ if $useCaption }}<a href='{{with $group}}{{.}}/{{end}}{{strings.Replace $imgname " " "-" | lower}}' target='_self'>Click here to find out more about {{$imgname}}</a>{{else}}{{$imgname}}{{end}}">
+                <img src="{{ $src }}" style="width:100%"> <br/>
+            </a>
+        </div>
+        {{ if (modBool (add $index 1) 3) }}</div>{{end}}
+    {{ end }}
+    {{ if (not (modBool (len (readDir $path)) 3)) }}</div>{{end}}
+</div>
