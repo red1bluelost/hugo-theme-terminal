@@ -14,6 +14,7 @@
     {{ end }}
     {{ $paginator := .Paginate (where $PageContext.RegularPages "Type" $contentTypeName) }}
 
+    {{if $.Param "show_list"}}
     {{ range $paginator.Pages }}
       <div class="post on-list">
         <h1 class="post-title">
@@ -63,5 +64,6 @@
       </div>
     {{ end }}
     {{ partial "pagination.html" . }}
+    {{ end  }}
   </div>
 {{ end }}

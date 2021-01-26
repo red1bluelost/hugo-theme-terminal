@@ -4,6 +4,7 @@
       {{ . }}
     </div>
   {{ end }}
+  {{if $.Param "show_list"}}
   <div class="posts">
     {{ range .Pages }}
       <div class="post on-list">
@@ -55,4 +56,5 @@
     {{ end }}
     {{ partial "pagination.html" . }}
   </div>
+  {{ end }}
 {{ end }}
