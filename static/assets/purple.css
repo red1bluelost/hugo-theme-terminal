@@ -267,7 +267,7 @@ mark {
     margin: 0 auto;
 }
 .container.full {
-    max-width: 100%;
+    max-width: 96%;
 }
 @media (max-width: 684px) {
     .container {
@@ -781,31 +781,3 @@ pre[data-line] {
 }
 @custom-media --phone (max-width: 684px);
 @custom-media --tablet (max-width: 900px);
-
-.sbs-left {
-    float: left;
-    width: 37%;
-    padding: 5px;
-}
-.sbs-right {
-    float: left;
-    width: 63%;
-    padding: 5px;
-}
-/* Clear floats after image containers */
-.sbs-row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-@media screen and (max-width: 684px) {
-    .sbs-left {
-        width: 100%;
-        padding: 5px;
-    }
-    .sbs-right {
-        width: 100%;
-        padding: 5px;
-    }
-}
