@@ -1,0 +1,92 @@
+<style>
+    div.row_box {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    div.row_box::after {
+        margin-left: 30px;
+        margin-right: 30px;
+        clear: both;
+        display: table;
+    }
+
+    div.column_box {
+        float: left;
+        background: #999999;
+        width: 20%;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        height: 30%;
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 684px) {
+        div.column_box {
+            width: 70%;
+            padding: 5px;
+            height: 26vw;
+        }
+    }
+
+    div.column_box p {
+        flex-grow: 1;
+        object-fit: cover;
+        margin: 10px;
+        text-align: center;
+    }
+
+    div.column_box a p {
+        flex-grow: 1;
+        object-fit: cover;
+        font-size: 1rem;
+        margin: 10px;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 684px) {
+        div.column_box p {
+            font-size: 2rem;
+        }
+
+        div.column_box a p {
+            font-size: 1.4rem;
+        }
+    }
+
+
+</style>
+<div>
+    <div class="row_box">
+        {{$box := (.Get "box0")}}
+        {{if $box}}
+            <div class="column_box">
+                <p>{{$box}}</p>
+                <a href="{{.Get "box0_href"}}" target="{{.Get "box0_target"}}"><p>{{.Get "box0_c"}}</p></a>
+            </div>
+        {{end}}
+        {{$box = (.Get "box1")}}
+        {{if $box}}
+            <div class="column_box">
+                <p>{{$box}}</p>
+                <a href="{{.Get "box1_href"}}" target="{{.Get "box1_target"}}"><p>{{.Get "box1_c"}}</p></a>
+            </div>
+        {{end}}
+        {{$box = (.Get "box2")}}
+        {{if $box}}
+            <div class="column_box">
+                <p>{{$box}}</p>
+                <a href="{{.Get "box2_href"}}" target="{{.Get "box2_target"}}"><p>{{.Get "box2_c"}}</p></a>
+            </div>
+        {{end}}
+        {{$box = (.Get "box3")}}
+        {{if $box}}
+            <div class="column_box">
+                <p>{{$box}}</p>
+                <a href="{{.Get "box3_href"}}" target="{{.Get "box3_target"}}"><p>{{.Get "box3_c"}}</p></a>
+            </div>
+        {{end}}
+    </div>
+</div>
