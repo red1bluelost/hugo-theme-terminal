@@ -5,11 +5,10 @@
     }
 
     div.row::after {
-        content: "";
         clear: both;
         display: table;
     }
-
+    {{ $vw_height := (.Get "vw") }}
     div.column {
         float: left;
         width: 30%;
@@ -17,7 +16,7 @@
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 10px;
-        height: {{with (.Get "vw") }}{{.}}vw;{{else}}25vw;{{end}}
+        height: {{with $vw_height }}{{.}}{{else}}25{{end}}vw;
         overflow: hidden;
     }
 
