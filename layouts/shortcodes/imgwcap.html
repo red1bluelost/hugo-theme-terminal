@@ -7,9 +7,21 @@
     .sbs-right {
         float: left;
         width: 63%;
-        padding: 5px;
+    }
+
+    p {
+        font-size: 1.4vw;
+    }
+
+    .sbs-right p {
+        margin-top: 0;
+        margin-bottom: 25px;
     }
     /* Clear floats after image containers */
+    .sbs-row {
+        margin-bottom: 0px;
+    }
+
     .sbs-row::after {
         content: "";
         clear: both;
@@ -23,7 +35,10 @@
         }
         .sbs-right {
             width: 100%;
-            padding: 5px;
+        }
+
+        p {
+            font-size: 1.2rem;
         }
     }
 </style>
@@ -35,6 +50,6 @@
         {{ end }}
     </div>
     <div class="sbs-right">
-        {{.Inner}}
+        {{ with .Inner }}{{ $.Page.RenderString . }}{{ end }}
     </div>
 </div>
