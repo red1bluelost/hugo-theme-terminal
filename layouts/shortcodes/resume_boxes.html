@@ -1,0 +1,88 @@
+<style>
+    div.row_res {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    div.row_res::after {
+        margin-left: 30px;
+        margin-right: 30px;
+        clear: both;
+        display: table;
+    }
+
+    div.column_res {
+        float: left;
+        background: #4e4e4e;
+        width: 27%;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 900px) {
+        div.column_res {
+            width: 90%;
+            padding: 5px;
+            height: 100%;
+        }
+    }
+
+    div.column_res h3 {
+        flex-grow: 1;
+        object-fit: cover;
+        margin: 10px;
+        text-align: center;
+    }
+
+    div.column_res h5 {
+        flex-grow: 1;
+        object-fit: cover;
+        margin: 10px;
+        text-align: center;
+    }
+
+
+    div.column_res p {
+        flex-grow: 1;
+        object-fit: cover;
+        margin: 10px;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+</style>
+<div>
+    <div class="row_res">
+        {{$box := (.Get "b0")}}
+        {{if $box}}
+            <div class="column_res">
+                <h3>{{$box}}</h3>
+                <h5>{{.Get "b0_title"}}</h5>
+                <p>{{.Get "b0_time"}}</p>
+                <p>{{.Get "b0_desc"}}</p>
+            </div>
+        {{end}}
+        {{$box = (.Get "b1")}}
+        {{if $box}}
+            <div class="column_res">
+                <h3>{{$box}}</h3>
+                <h5>{{.Get "b1_title"}}</h5>
+                <p>{{.Get "b1_time"}}</p>
+                <p>{{.Get "b1_desc"}}</p>
+            </div>
+        {{end}}
+        {{$box = (.Get "b2")}}
+        {{if $box}}
+            <div class="column_res">
+                <h3>{{$box}}</h3>
+                <h5>{{.Get "b2_title"}}</h5>
+                <p>{{.Get "b2_time"}}</p>
+                <p>{{.Get "b2_desc"}}</p>
+            </div>
+        {{end}}
+    </div>
+</div>

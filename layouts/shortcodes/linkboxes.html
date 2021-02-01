@@ -14,7 +14,7 @@
     div.column_box {
         float: left;
         background: #999999;
-        width: 20%;
+        width: {{with .Get "width"}}{{.}}{{else}}20%{{end}};
         padding: 10px;
         margin-left: auto;
         margin-right: auto;
@@ -27,7 +27,7 @@
         div.column_box {
             width: 70%;
             padding: 5px;
-            height: 26vw;
+            height: {{with .Get "box0_extra"}}32{{else}}26{{end}}vw;
         }
     }
 
@@ -64,6 +64,7 @@
         {{if $box}}
             <div class="column_box">
                 <p>{{$box}}</p>
+                {{with .Get "box0_extra"}}<p style="font-size: 1rem">{{.}}</p>{{end}}
                 <a href="{{.Get "box0_href"}}" target="{{.Get "box0_target"}}"><p>{{.Get "box0_c"}}</p></a>
             </div>
         {{end}}
