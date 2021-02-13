@@ -27,7 +27,7 @@
         div.column_box {
             width: 70%;
             padding: 5px;
-            height: 40vw;
+            height: {{with .Get "box0_extra"}}48{{else}}40{{end}}vw;
         }
     }
 
